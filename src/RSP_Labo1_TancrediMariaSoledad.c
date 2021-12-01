@@ -148,9 +148,10 @@ int main(void)
                         		puts("\n »» CARGA COMPLETA HOGARES");
                         	}
                         }
-
+                        systemPause("\n »»»» Presione enter para continuar...");
 						break;
 					case 8:
+						//NO LLEGUE
 						break;
 					case 9:
 						printf("\n »»» FIN DEL PROGRAMA ««« ");
@@ -159,7 +160,7 @@ int main(void)
 						break;
 				}
 			}
-	} while (option != 7);
+	} while (option != 9);
 
     return EXIT_SUCCESS;
  }

@@ -33,7 +33,7 @@ Perrito* perrito_newParametros(char* idStr,char* nombreStr,char* pesoStr , char*
 	   (*pBufferPerrito).edad = atoi(edadStr);
 
 	   strcpy((*pBufferPerrito).raza, razaStr);
-	   (*pBufferPerrito).raza[strlen(razaStr)-1]='\0';//ESTA LINEA ES SOLO PARA LINUX
+	 //  (*pBufferPerrito).raza[strlen(razaStr)-1]='\0';//ESTA LINEA ES SOLO PARA LINUX
 	   return pBufferPerrito;
 	}
        return NULL;
