@@ -19,7 +19,7 @@ typedef struct
 	int edad;
 	char raza[TAM_CHAR];
 	float cantidadComidaRacion;
-	eHogar datosHogar;
+	int idHogar;
 
 }ePerritoConHogar;
 
@@ -48,6 +48,7 @@ int perritoHogar_sortNames(void* thisOne, void* thisTwo);
 int perritoHogar_laQueMapea(void* pElement);
 void perritoHogar_showUnit(ePerritoConHogar* this);
 int perritoHogar_laQueFiltra(void* pElement);
+int perritoHogar_getIdHogar(ePerritoConHogar* this,int* idHogar);
 
 
 #endif /* EPERRITOCONHOGAR_H_ */

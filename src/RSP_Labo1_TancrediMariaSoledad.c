@@ -22,7 +22,7 @@ int main(void)
 	//setbuf(stdout,NULL); --> WINDOWS
     LinkedList* perritoList = ll_newLinkedList();
     LinkedList* galgosList  = NULL;
-    LinkedList* perritosConHogar = NULL;
+    LinkedList* perritosConHogar = ll_newLinkedList();
     int option;
     int flagCarga = 0;
     int flagMapeo = 0;
@@ -141,8 +141,9 @@ int main(void)
 					case 7:
                         if(controller_loadFromTextPerritosConHogar("perritosConHogar.csv", perritosConHogar) == 0)
                         {
-                        	printf("\n CARGA PERRITOD HOGAR");
+                        	printf("\n CARGA PERRITOS HOGAR");
                         }
+
 						break;
 					case 8:
 						break;

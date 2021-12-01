@@ -56,7 +56,7 @@ int controller_loadFromTextPerritosConHogar(char* path , LinkedList* pArrayListP
 	{
 	    if(parser_PerritoHogarFromText(pFile, pArrayListPerrito) == 0)
 	    {
-	    	//puts("\nno anda igual");
+
 		    retorno = 0;
 	    }
 	    else

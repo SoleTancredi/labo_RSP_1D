@@ -65,6 +65,7 @@ int parser_PerritoHogarFromText(FILE* pFile , LinkedList* pArrayListPerrito)
 		int leidos;
 		ePerritoConHogar* pNewPerrito;
 
+
 		if(pFile != NULL && pArrayListPerrito != NULL)
 		{
 		    fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n" , strId, strNombre,strPeso,strEdad, strRaza,strIdHogar);

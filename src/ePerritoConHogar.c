@@ -36,7 +36,7 @@ ePerritoConHogar* perritoHogar_newParametros(char* idStr,char* nombreStr,char* p
 	   strcpy((*pBufferPerrito).raza, razaStr);
 	 //  (*pBufferPerrito).raza[strlen(razaStr)-1]='\0';//ESTA LINEA ES SOLO PARA LINUX
 
-	   (*pBufferPerrito).datosHogar.id = atoi(idHogarStr);
+	   (*pBufferPerrito).idHogar = atoi(idHogarStr);
 
 	   return pBufferPerrito;
 	}
@@ -171,6 +171,19 @@ int perritoHogar_getEdad(ePerritoConHogar* this,int* edad)
 	if(this != NULL && edad != NULL)
 	{
 		*edad = (*this).edad;
+		retorno = 0;
+	}
+
+	return retorno;
+}
+
+int perritoHogar_getIdHogar(ePerritoConHogar* this,int* idHogar)
+{
+	int retorno = -1;
+
+	if(this != NULL && idHogar!= NULL)
+	{
+		*idHogar = (*this).idHogar;
 		retorno = 0;
 	}
 
@@ -365,6 +378,7 @@ void perritoHogar_showUnit(ePerritoConHogar* this)
 	float peso;
 	int edad;
 	char raza[21];
+	int idHogar;
 
 	if(this != NULL)
 	{
@@ -372,11 +386,11 @@ void perritoHogar_showUnit(ePerritoConHogar* this)
 		&& perritoHogar_getNombre(this, nombre) == 0
 		&& perritoHogar_getPeso(this, &peso) == 0
 		&& perritoHogar_getEdad(this, &edad) == 0
-		&& perritoHogar_getRaza(this, raza) == 0)
-
+		&& perritoHogar_getRaza(this, raza) == 0
+		&& perritoHogar_getIdHogar(this, &idHogar) == 0)
 
 		{
-			printf("\n  %-10d|   %-10s  %-10.2f  %-10d  %-8s %-8d\n  ", id, nombre, peso, edad,raza, this->datosHogar.id);
+			printf("\n  %-10d|   %-10s  %-10.2f  %-10d  %-8s %-8d\n  ", id, nombre, peso, edad,raza, idHogar);
 		}
 		else
 		{
