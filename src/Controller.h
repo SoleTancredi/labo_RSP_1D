@@ -13,6 +13,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListPerritos);
 int controller_saveAsTextEspecialita(char* path , LinkedList* pArrayListPerritos);
 int controller_loadFromTextEspecialita(char* path , LinkedList* pArrayListPerrito);
 int controller_loadFromTextPerritosConHogar(char* path , LinkedList* pArrayListPerrito);
+int controller_loadFromTextDireccion(char* path , LinkedList* pArrayListPerrito);
 
 
 

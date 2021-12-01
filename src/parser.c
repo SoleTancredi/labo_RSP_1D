@@ -80,7 +80,7 @@ int parser_PerritoHogarFromText(FILE* pFile , LinkedList* pArrayListPerrito)
 					if(pNewPerrito!=NULL)
 					{
 						retorno = ll_add(pArrayListPerrito,pNewPerrito);
-						perritoHogar_showUnit(pNewPerrito);
+
 					}
 				}
 				else
@@ -95,6 +95,44 @@ int parser_PerritoHogarFromText(FILE* pFile , LinkedList* pArrayListPerrito)
     return retorno;
 }
 
+int parser_HogarFromText(FILE* pFile , LinkedList* pArrayListPerrito)
+{
+	    int retorno = -1;
+		char strId[21];
+		char strDireccion[41];
+
+		int leidos;
+		eHogar* pNewHogar;
+
+
+		if(pFile != NULL && pArrayListPerrito != NULL)
+		{
+		    fscanf(pFile,"%[^,],%[^\n]\n" , strId, strDireccion);
+
+		    do
+		    {
+		        leidos = fscanf(pFile,"%[^,],%[^\n]\n", strId,strDireccion);
+				if(leidos == 2)
+				{
+					pNewHogar = Hogar_newParametros(strId, strDireccion);
+
+					if(pNewHogar!=NULL)
+					{
+						retorno = ll_add(pArrayListPerrito,pNewHogar);
+
+					}
+				}
+				else
+				{
+					printf("\n »» Error en la lectura.");
+					retorno = -1;
+					break;
+				}
+
+		    }while(!feof(pFile));
+		}
+    return retorno;
+}
 
 int parser_PerritoFromTextEspecialito(FILE* pFile , LinkedList* pArrayListPerrito)
 {

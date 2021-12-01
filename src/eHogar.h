@@ -16,5 +16,7 @@ typedef struct
 
 }eHogar;
 
+eHogar* Hogar_newParametros(char* idStr,char* direccionStr);
 
+eHogar* Hogar_new();
 #endif /* EHOGAR_H_ */

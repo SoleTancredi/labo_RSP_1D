@@ -70,6 +70,28 @@ int controller_loadFromTextPerritosConHogar(char* path , LinkedList* pArrayListP
     return retorno;
 }
 
+int controller_loadFromTextDireccion(char* path , LinkedList* pArrayListPerrito)
+{
+	int retorno = -1;
+	FILE* pFile  = fopen(path, "r");
+	if(pFile != NULL)
+	{
+	    if(parser_HogarFromText(pFile, pArrayListPerrito) == 0)
+	    {
+
+		    retorno = 0;
+	    }
+	    else
+	    {
+	    	printf("\n rompe parser");
+	    }
+	}
+
+	fclose(pFile);
+
+    return retorno;
+}
+
 
 
 /** \brief Listar perritos
