@@ -14,6 +14,7 @@
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Perrito.h"
+#include "ePerritoConHogar.h"
 #include "BibliotecaUtn2021.h"
 
 int main(void)
@@ -21,6 +22,7 @@ int main(void)
 	//setbuf(stdout,NULL); --> WINDOWS
     LinkedList* perritoList = ll_newLinkedList();
     LinkedList* galgosList  = NULL;
+    LinkedList* perritosConHogar = NULL;
     int option;
     int flagCarga = 0;
     int flagMapeo = 0;
@@ -36,8 +38,10 @@ int main(void)
 				"\n[4] Perritos con raciones de comida"
 				"\n[5] Filter "
 				"\n[6] Guardar en un nuevo archivo"
-				"\n[7] Salir. "
-				"\n »» INGRESE UNA OPCION:  ", "\n × ERROR. ", 1, 7,1) == 0)
+				"\n[7] Cargar nuevas LinkedList."
+				"\n[8] Listado de perritos con sus hogares ordenado por direccion descendente."
+				"\n[9] Salir. "
+				"\n »» INGRESE UNA OPCION:  ", "\n × ERROR. ", 1, 9,1) == 0)
 			{
 				switch (option)
 				{
@@ -135,6 +139,14 @@ int main(void)
 						systemPause("\n »»»» Presione enter para continuar...");
 						break;
 					case 7:
+                        if(controller_loadFromTextPerritosConHogar("perritosConHogar.csv", perritosConHogar) == 0)
+                        {
+                        	printf("\n CARGA PERRITOD HOGAR");
+                        }
+						break;
+					case 8:
+						break;
+					case 9:
 						printf("\n »»» FIN DEL PROGRAMA ««« ");
 						ll_deleteLinkedList(perritoList);
 						ll_deleteLinkedList(galgosList);

@@ -48,6 +48,28 @@ int controller_loadFromTextEspecialita(char* path , LinkedList* pArrayListPerrit
     return retorno;
 }
 
+int controller_loadFromTextPerritosConHogar(char* path , LinkedList* pArrayListPerrito)
+{
+	int retorno = -1;
+	FILE* pFile  = fopen(path, "r");
+	if(pFile != NULL)
+	{
+	    if(parser_PerritoHogarFromText(pFile, pArrayListPerrito) == 0)
+	    {
+	    	//puts("\nno anda igual");
+		    retorno = 0;
+	    }
+	    else
+	    {
+	    	printf("\n rompe parser");
+	    }
+	}
+
+	fclose(pFile);
+
+    return retorno;
+}
+
 
 
 /** \brief Listar perritos
@@ -219,49 +241,8 @@ int controller_llMap(LinkedList* this)
    return retorno;
 }
 
-// no funciona
-int controller_llFilter(LinkedList* this, LinkedList* this2)
-{
-   int retorno = -1;
-
-   if(this != NULL )
-   {
-	 this2 = ll_filter(this, perrito_laQueFiltra);
-	 perrito_showListPunto3(this2);
-	 retorno = 0;
-   }
-
-   return retorno;
-}
 
 
 
-/*
-int controller_maxId(LinkedList* pArrayListEmployee, int* id)
-{
-	int retorno = -1;
-	int maxId = 0;
-	int flag = 0;
-	int idEmp;
-	Employee* pEmpleado;
-
-	if(pArrayListEmployee != NULL)
-	{
-		for(int i = 0; i < ll_len(pArrayListEmployee); i++)
-	    {
-			pEmpleado = ll_get(pArrayListEmployee, i);
-		    employee_getId(pEmpleado, &idEmp);
-		    if(flag == 0 ||idEmp > maxId)
-		    {
-		    	maxId = idEmp;
-		    	flag = 1;
-		    	retorno = 0;
-		    }
-		}
-		*id = maxId;
-	}
-
-	return retorno;
-}*/
 
 

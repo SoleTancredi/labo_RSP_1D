@@ -1,29 +1,31 @@
 /*
- * Perrito.c
+ * ePerritoConHogar.c
  *
- *  Created on: 26 nov. 2021
+ *  Created on: 1 dic. 2021
  *      Author: sole
  */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Perrito.h"
 #include "LinkedList.h"
 #include "BibliotecaUtn2021.h"
+#include "ePerritoConHogar.h"
 
-Perrito* perrito_new()
+
+ePerritoConHogar* perritoHogar_new()
 {
-	Perrito *pBufferPerrito=NULL;
-	pBufferPerrito = (Perrito*)malloc(sizeof(Perrito));
+	ePerritoConHogar *pBufferPerrito=NULL;
+	pBufferPerrito = (ePerritoConHogar*)malloc(sizeof(ePerritoConHogar));
 
 	return pBufferPerrito;
 }
 
-Perrito* perrito_newParametros(char* idStr,char* nombreStr,char* pesoStr , char* edadStr, char* razaStr)
+ePerritoConHogar* perritoHogar_newParametros(char* idStr,char* nombreStr,char* pesoStr , char* edadStr, char* razaStr, char* idHogarStr)
 {
-	Perrito* pBufferPerrito;
+	ePerritoConHogar* pBufferPerrito;
 
-	pBufferPerrito = perrito_new();
+	pBufferPerrito = perritoHogar_new();
 
 	if(pBufferPerrito != NULL)
 	{
@@ -31,19 +33,21 @@ Perrito* perrito_newParametros(char* idStr,char* nombreStr,char* pesoStr , char*
 	   strcpy((*pBufferPerrito).nombre, nombreStr);
 	   (*pBufferPerrito).peso = atof(pesoStr);
 	   (*pBufferPerrito).edad = atoi(edadStr);
-
 	   strcpy((*pBufferPerrito).raza, razaStr);
-	   (*pBufferPerrito).raza[strlen(razaStr)-1]='\0';//ESTA LINEA ES SOLO PARA LINUX
+	 //  (*pBufferPerrito).raza[strlen(razaStr)-1]='\0';//ESTA LINEA ES SOLO PARA LINUX
+
+	   (*pBufferPerrito).datosHogar.id = atoi(idHogarStr);
+
 	   return pBufferPerrito;
 	}
        return NULL;
 }
 
-Perrito* perrito_newParametrosEspecialito(char* idStr,char* nombreStr,char* pesoStr , char* edadStr, char* razaStr, char* cantComidaStr)
+ePerritoConHogar* perritoHogar_newParametrosEspecialito(char* idStr,char* nombreStr,char* pesoStr , char* edadStr, char* razaStr, char* cantComidaStr)
 {
-	Perrito* pBufferPerrito;
+	ePerritoConHogar* pBufferPerrito;
 
-	pBufferPerrito = perrito_new();
+	pBufferPerrito = perritoHogar_new();
 
 	if(pBufferPerrito != NULL)
 	{
@@ -60,7 +64,7 @@ Perrito* perrito_newParametrosEspecialito(char* idStr,char* nombreStr,char* peso
 }
 
 
-void perrito_delete(Perrito* this)
+void perritoHogar_delete(ePerritoConHogar* this)
 {
 	if(this != NULL)
 	{
@@ -68,7 +72,7 @@ void perrito_delete(Perrito* this)
 	}
 }
 
-int perrito_setId(Perrito* this,int id)
+int perritoHogar_setId(ePerritoConHogar* this,int id)
 {
 	int retorno = -1;
 
@@ -81,7 +85,7 @@ int perrito_setId(Perrito* this,int id)
 	return retorno;
 }
 
-int perrito_getId(Perrito* this,int* id)
+int perritoHogar_getId(ePerritoConHogar* this,int* id)
 {
    int retorno = -1;
 
@@ -94,7 +98,7 @@ int perrito_getId(Perrito* this,int* id)
    return retorno;
 }
 
-int perrito_setNombre(Perrito* this,char* nombre)
+int perritoHogar_setNombre(ePerritoConHogar* this,char* nombre)
 {
 	int retorno = -1;
 
@@ -106,7 +110,7 @@ int perrito_setNombre(Perrito* this,char* nombre)
 	return retorno;
 }
 
-int perrito_getNombre(Perrito* this,char* nombre)
+int perritoHogar_getNombre(ePerritoConHogar* this,char* nombre)
 {
 	int retorno = -1;
 
@@ -119,7 +123,7 @@ int perrito_getNombre(Perrito* this,char* nombre)
 	return retorno;
 }
 
-int perrito_setPeso(Perrito* this,float peso)
+int perritoHogar_setPeso(ePerritoConHogar* this,float peso)
 {
 	int retorno = -1;
 
@@ -132,7 +136,7 @@ int perrito_setPeso(Perrito* this,float peso)
 	return retorno;
 }
 
-int perrito_getPeso(Perrito* this,float* peso)
+int perritoHogar_getPeso(ePerritoConHogar* this,float* peso)
 {
 	int retorno = -1;
 
@@ -145,7 +149,7 @@ int perrito_getPeso(Perrito* this,float* peso)
 	return retorno;
 }
 
-int perrito_setEdad(Perrito* this,int edad)
+int perritoHogar_setEdad(ePerritoConHogar* this,int edad)
 {
 	int retorno = -1;
 
@@ -160,7 +164,7 @@ int perrito_setEdad(Perrito* this,int edad)
 }
 
 
-int perrito_getEdad(Perrito* this,int* edad)
+int perritoHogar_getEdad(ePerritoConHogar* this,int* edad)
 {
 	int retorno = -1;
 
@@ -173,7 +177,7 @@ int perrito_getEdad(Perrito* this,int* edad)
 	return retorno;
 }
 
-int perrito_setRaza(Perrito* this,char* raza)
+int perritoHogar_setRaza(ePerritoConHogar* this,char* raza)
 {
 	int retorno = -1;
 
@@ -185,7 +189,7 @@ int perrito_setRaza(Perrito* this,char* raza)
 	return retorno;
 }
 
-int perrito_getRaza(Perrito* this,char* raza)
+int perritoHogar_getRaza(ePerritoConHogar* this,char* raza)
 {
 	int retorno = -1;
 
@@ -198,7 +202,7 @@ int perrito_getRaza(Perrito* this,char* raza)
 	return retorno;
 }
 
-int perrito_setCantidadComida(Perrito* this,float cantidadComida)
+int perritoHogar_setCantidadComida(ePerritoConHogar* this,float cantidadComida)
 {
 	int retorno = -1;
 
@@ -211,7 +215,7 @@ int perrito_setCantidadComida(Perrito* this,float cantidadComida)
 	return retorno;
 }
 
-int perrito_getCantidadComida(Perrito* this,float* cantidadComida)
+int perritoHogar_getCantidadComida(ePerritoConHogar* this,float* cantidadComida)
 {
 	int retorno = -1;
 
@@ -224,7 +228,7 @@ int perrito_getCantidadComida(Perrito* this,float* cantidadComida)
 	return retorno;
 }
 
-void perrito_showUnitPunto3(Perrito* this)
+void perritoHogar_showUnitPunto3(ePerritoConHogar* this)
 {
 	int id;
 	char nombre[41];
@@ -235,13 +239,13 @@ void perrito_showUnitPunto3(Perrito* this)
 
 	if(this != NULL)
 	{
-		if(perrito_getId(this, &id) == 0
-		&& perrito_getNombre(this, nombre) == 0
-		&& perrito_getPeso(this, &peso) == 0
-		&& perrito_getEdad(this, &edad) == 0
-		&& perrito_getCantidadComida(this, &cantidadComida) == 0
-		&& perrito_getRaza(this, raza) == 0
-		&& perrito_getCantidadComida(this, &cantidadComida) == 0)
+		if(perritoHogar_getId(this, &id) == 0
+		&& perritoHogar_getNombre(this, nombre) == 0
+		&& perritoHogar_getPeso(this, &peso) == 0
+		&& perritoHogar_getEdad(this, &edad) == 0
+		&& perritoHogar_getCantidadComida(this, &cantidadComida) == 0
+		&& perritoHogar_getRaza(this, raza) == 0
+		&& perritoHogar_getCantidadComida(this, &cantidadComida) == 0)
 
 
 		{
@@ -254,18 +258,18 @@ void perrito_showUnitPunto3(Perrito* this)
 	}
 }
 
-int perrito_showListPunto3(LinkedList* this)
+int perritoHogar_showListPunto3(LinkedList* this)
 {
 	int retorno = -1,cont=0;
-	Perrito* pAuxPerrito;
+	ePerritoConHogar* pAuxPerrito;
 
 	if(this != NULL)
 	{
-	    perrito_posterListPunto3();
+		perritoHogar_posterListPunto3();
 	    for(int i = 0; i < ll_len(this); i++)
 	    {
 		pAuxPerrito = ll_get(this, i);
-		perrito_showUnitPunto3(pAuxPerrito);
+		perritoHogar_showUnitPunto3(pAuxPerrito);
 		cont++;
 		retorno = 0;
 	    }
@@ -276,18 +280,18 @@ int perrito_showListPunto3(LinkedList* this)
 }
 
 
-int perrito_showList(LinkedList* this)
+int perritoHogar_showList(LinkedList* this)
 {
     int retorno = -1,cont=0;
-    Perrito* pAuxPerrito;
+    ePerritoConHogar* pAuxPerrito;
 
     if(this != NULL)
     {
-	perrito_posterList();
+    	perritoHogar_posterList();
 	for(int i = 0; i < ll_len(this); i++)
 	{
 	    pAuxPerrito = ll_get(this, i);
-	    perrito_showUnit(pAuxPerrito);
+	    perritoHogar_showUnit(pAuxPerrito);
 	    cont++;
 	    retorno = 0;
 	}
@@ -297,14 +301,14 @@ int perrito_showList(LinkedList* this)
     return retorno;
 }
 
-void perrito_posterList()
+void perritoHogar_posterList()
 {
 	printf("\n\t  ## LISTADO DE PERRITOS ##");
 	printf("\n_____________________________________________________________________\n");
 	printf("\n  %-6s     %-14s%-10s  %-15s  %-10s \n","ID ","NOMBRE "," PESO    ","EDAD  ", " RAZA  ");
 	printf("______________________________________________________________________\n");
 }
-void perrito_posterListPunto3()
+void perritoHogar_posterListPunto3()
 {
 	printf("\n\t\t  ## LISTADO DE PERRITOS FLAQUITOS ##");
 	printf("\n______________________________________________________________________________________________\n");
@@ -312,11 +316,11 @@ void perrito_posterListPunto3()
 	printf("_______________________________________________________________________________________________\n");
 }
 
-int perrito_sortNames(void* thisOne, void* thisTwo)
+int perritoHogar_sortNames(void* thisOne, void* thisTwo)
 {
 	int retorno = 0;
-	Perrito* pBuffer1;
-	Perrito* pBuffer2;
+	ePerritoConHogar* pBuffer1;
+	ePerritoConHogar* pBuffer2;
 
 	pBuffer1 = thisOne;
 	pBuffer2 = thisTwo;
@@ -340,10 +344,10 @@ int perrito_sortNames(void* thisOne, void* thisTwo)
 	return retorno;
 }
 
-int perrito_laQueMapea(void* pElement)
+int perritoHogar_laQueMapea(void* pElement)
 {
 	int retorno = -1;
-	Perrito* pPerrito = (Perrito*) pElement;
+	ePerritoConHogar* pPerrito = (ePerritoConHogar*) pElement;
 
 	if(pElement != NULL)
 	{
@@ -354,7 +358,7 @@ int perrito_laQueMapea(void* pElement)
 	return retorno;
 }
 
-void perrito_showUnit(Perrito* this)
+void perritoHogar_showUnit(ePerritoConHogar* this)
 {
 	int id;
 	char nombre[21];
@@ -364,15 +368,15 @@ void perrito_showUnit(Perrito* this)
 
 	if(this != NULL)
 	{
-		if(perrito_getId(this, &id) == 0
-		&& perrito_getNombre(this, nombre) == 0
-		&& perrito_getPeso(this, &peso) == 0
-		&& perrito_getEdad(this, &edad) == 0
-		&& perrito_getRaza(this, raza) == 0)
+		if(perritoHogar_getId(this, &id) == 0
+		&& perritoHogar_getNombre(this, nombre) == 0
+		&& perritoHogar_getPeso(this, &peso) == 0
+		&& perritoHogar_getEdad(this, &edad) == 0
+		&& perritoHogar_getRaza(this, raza) == 0)
 
 
 		{
-			printf("\n  %-10d|   %-10s  %-10.2f  %-10d  %-8s \n  ", id, nombre, peso, edad,raza );
+			printf("\n  %-10d|   %-10s  %-10.2f  %-10d  %-8s %-8d\n  ", id, nombre, peso, edad,raza, this->datosHogar.id);
 		}
 		else
 		{
@@ -381,10 +385,10 @@ void perrito_showUnit(Perrito* this)
 	}
 }
 
-int perrito_laQueFiltra(void* pElement)
+int perritoHogar_laQueFiltra(void* pElement)
 {
 	int retorno = -1;
-	Perrito* pBuffer = (Perrito*) pElement;
+	ePerritoConHogar* pBuffer = (ePerritoConHogar*) pElement;
 
 	if(pElement != NULL)
 	{
@@ -399,6 +403,7 @@ int perrito_laQueFiltra(void* pElement)
 	}
 	return retorno;
 }
+
 
 
 

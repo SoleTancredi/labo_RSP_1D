@@ -12,6 +12,7 @@ int controller_llFilter(LinkedList* this, LinkedList* this2);
 int controller_saveAsText(char* path , LinkedList* pArrayListPerritos);
 int controller_saveAsTextEspecialita(char* path , LinkedList* pArrayListPerritos);
 int controller_loadFromTextEspecialita(char* path , LinkedList* pArrayListPerrito);
+int controller_loadFromTextPerritosConHogar(char* path , LinkedList* pArrayListPerrito);
 
 
 
